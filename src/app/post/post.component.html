@@ -1,0 +1,24 @@
+<form (ngSubmit)="submitPostForm()">
+  <label for="title">Title:</label>
+  <input type="text" id="title" [(ngModel)]="newPost.title" name="title" required>
+
+  <label for="body">Description:</label>
+  <textarea id="body" [(ngModel)]="newPost.body" name="body" required></textarea>
+
+  <div class="button-container">
+    <button type="submit">{{ selectedPostId ? 'Update' : 'Create' }} Post</button>
+    <!-- <button type="button" *ngIf="selectedPostId" (click)="cancelUpdate()">Cancel</button> -->
+  </div>
+</form>
+
+<p>All posts:</p>
+
+<ul>
+  <li *ngFor="let post of posts">
+    Title: {{ post.title }}
+    <br/>
+    Description: {{post.body}}
+    <button (click)="selectPost(post.id)">Update</button>
+    <button (click)="deletePost(post.id)">Delete</button>
+  </li>
+</ul>
